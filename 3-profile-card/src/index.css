@@ -14,8 +14,9 @@ code {
 
 .frame {
   margin: 10px;
+  padding-bottom: 10px;
   border: 2px solid black;
-  height: 450px;
+  height: auto;
   width: 300px;
   border-radius: 5px;
 }
@@ -26,4 +27,17 @@ code {
 
 .content {
   margin: 0px 1em;
+}
+
+.tags_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  flex: 0 1 auto;
+  white-space: nowrap;
+  padding: 2px 7px;
+  border-radius: 5px;
 }

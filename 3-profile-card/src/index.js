@@ -17,7 +17,7 @@ const Card = function () {
       <div className="content">
         <Title />
         <Description />
-        {/*<Tags /> */}
+        <Tags />
       </div>
     </div>
   );
@@ -49,6 +49,24 @@ const Description = function () {
     </div>
   );
 };
+
+const Tags = function () {
+  return (
+    <div className="tags_container">
+      <Tag color="lightblue" text="React⚛️" />
+      <Tag color="lightgreen" text="JavaScript📜" />
+      <Tag color="lightcoral" text="Frontend💻" />
+      <Tag color="CadetBlue" text="Backend⚙️" />
+      <Tag color="DarkKhaki" text="Next.js🔥" />
+    </div>
+  );
+};
+
+const Tag = ({ color, text }) => (
+  <div className="tag" style={{ backgroundColor: color }}>
+    {text}
+  </div>
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
