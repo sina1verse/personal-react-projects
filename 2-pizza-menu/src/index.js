@@ -100,23 +100,25 @@ function Footer() {
   const hour = new Date().getHours();
   const openHour = 12;
   const closeHour = 22;
+  let content;
   const isOpen = hour >= openHour && hour <= closeHour;
-  console.log(isOpen);
 
-  return (
-    <footer className="footer">
-      {isOpen ? (
-        <div className="order">
-          <p>We're open until {closeHour}:00. Come vist us or order online.</p>
-          <button className="btn">Order</button>
-        </div>
-      ) : (
-        <p>
-          We're happy to welcome you between {openHour}:00 and {closeHour}:00 🙏
-        </p>
-      )}
-    </footer>
-  );
+  if (isOpen) {
+    content = (
+      <div className="order">
+        <p>We're open until {closeHour}:00. Come vist us or order online.</p>
+        <button className="btn">Order</button>
+      </div>
+    );
+  } else {
+    content = (
+      <p>
+        We're happy to welcome you between {openHour}:00 and {closeHour}:00 🙏
+      </p>
+    );
+  }
+
+  return <footer className="footer">{content}</footer>;
 }
 
 const root = ReactDom.createRoot(document.getElementById("root"));
