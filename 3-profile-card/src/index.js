@@ -2,6 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
+const programmingSkills = [
+  { skill: "JavaScript", level: "advanced", color: "#F7DF1E" },
+  { skill: "HTML", level: "advanced", color: "#E34F26" },
+  { skill: "CSS", level: "intermediate", color: "#1572B6" },
+  { skill: "React", level: "intermediate", color: "#61DAFB" },
+  { skill: "Node.js", level: "intermediate", color: "#68A063" },
+  { skill: "C", level: "beginner", color: "#A8B9CC" },
+  { skill: "SQL", level: "beginner", color: "#336791" },
+];
+
 const App = function () {
   return (
     <div>
@@ -53,20 +63,23 @@ const Description = function () {
 const Tags = function () {
   return (
     <div className="tags_container">
-      <Tag color="lightblue" text="React⚛️" />
-      <Tag color="lightgreen" text="JavaScript📜" />
-      <Tag color="lightcoral" text="Frontend💻" />
-      <Tag color="CadetBlue" text="Backend⚙️" />
-      <Tag color="DarkKhaki" text="Next.js🔥" />
+      {programmingSkills.map((quality) => (
+        <Tag quality={quality} />
+      ))}
     </div>
   );
 };
 
-const Tag = ({ color, text }) => (
-  <div className="tag" style={{ backgroundColor: color }}>
-    {text}
-  </div>
-);
+const Tag = function ({ quality }) {
+  return (
+    <div className="tag" style={{ backgroundColor: quality.color }}>
+      {quality.skill}
+      {quality.level === "advanced" && "💪"}
+      {quality.level === "intermediate" && "👍"}
+      {quality.level === "beginner" && "👶"}
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
