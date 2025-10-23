@@ -11,14 +11,14 @@ export default function App() {
   const [isOpen, setIsOpen] = useState(true);
 
   function handlePrevious() {
-    setStep(step > 1 ? step - 1 : 3);
+    setStep(step > 1 ? step - 1 : 1);
   }
   function handleNext() {
-    setStep(step < 3 ? step + 1 : 1);
+    setStep(step < 3 ? step + 1 : 3);
   }
 
   return (
-    <div>
+    <>
       <button
         className="close"
         onClick={() => {
@@ -30,9 +30,9 @@ export default function App() {
       {isOpen && (
         <div className="steps">
           <div className="numbers">
-            <div className={step === 1 ? "active" : ""}>1</div>
-            <div className={step === 2 ? "active" : ""}>2</div>
-            <div className={step === 3 ? "active" : ""}>3</div>
+            <div className={step >= 1 ? "active" : ""}>1</div>
+            <div className={step >= 2 ? "active" : ""}>2</div>
+            <div className={step >= 3 ? "active" : ""}>3</div>
           </div>
 
           <p className="message">
@@ -55,6 +55,6 @@ export default function App() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
