@@ -22,11 +22,12 @@ function Step() {
 }
 
 function Count() {
+  const [count, setCount] = useState(1);
   return (
     <div className="container">
-      <button>-</button>
-      <p>Count: 1</p>
-      <button>+</button>
+      <button onClick={() => setCount(() => count - 1)}>-</button>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(() => count + 1)}>+</button>
     </div>
   );
 }
