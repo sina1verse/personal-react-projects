@@ -41,18 +41,13 @@ function DateString({ count }) {
   ).toDateString();
   let statement;
   if (count > 0) {
-    statement = `${count} days from today is `;
+    statement = `${count} days from today is ${date}`;
   } else if (count < 0) {
-    statement = `${Math.abs(count)} days ago was `;
-  } else {
-    statement = "Today is ";
-  }
+    statement = `${Math.abs(count)} days ago was ${date}`;
+  } else statement = `Today is ${date}`;
   return (
     <div className="container">
-      <p>
-        {statement}
-        {date}
-      </p>
+      <p>{statement}</p>
     </div>
   );
 }
