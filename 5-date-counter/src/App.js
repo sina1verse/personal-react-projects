@@ -16,11 +16,11 @@ export default function App() {
 function Step({ step, setStep }) {
   return (
     <div className="container">
-      <button onClick={() => setStep(() => (step > 0 ? step - 1 : step))}>
+      <button onClick={() => setStep((step) => (step > 0 ? step - 1 : step))}>
         -
       </button>
       <p>Step: {step}</p>
-      <button onClick={() => setStep(() => step + 1)}>+</button>
+      <button onClick={() => setStep((step) => step + 1)}>+</button>
     </div>
   );
 }
@@ -28,9 +28,9 @@ function Step({ step, setStep }) {
 function Count({ step, count, setCount }) {
   return (
     <div className="container">
-      <button onClick={() => setCount(() => count - step)}>-</button>
+      <button onClick={() => setCount((count) => count - step)}>-</button>
       <p>Count: {count}</p>
-      <button onClick={() => setCount(() => count + step)}>+</button>
+      <button onClick={() => setCount((count) => count + step)}>+</button>
     </div>
   );
 }
