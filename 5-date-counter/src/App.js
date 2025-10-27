@@ -2,11 +2,13 @@ import { useState } from "react";
 
 export default function App() {
   const [step, setStep] = useState(1);
+  const [count, setCount] = useState(0);
+
   return (
     <>
       <Step step={step} setStep={setStep} />
-      <Count step={step} />
-      <DateString />
+      <Count step={step} count={count} setCount={setCount} />
+      <DateString count={count} />
     </>
   );
 }
@@ -23,8 +25,7 @@ function Step({ step, setStep }) {
   );
 }
 
-function Count({ step }) {
-  const [count, setCount] = useState(0);
+function Count({ step, count, setCount }) {
   return (
     <div className="container">
       <button onClick={() => setCount(() => count - step)}>-</button>
@@ -34,11 +35,24 @@ function Count({ step }) {
   );
 }
 
-function DateString() {
-  const date = new Date().toDateString();
+function DateString({ count }) {
+  const date = new Date(
+    Date.now() + count * 24 * 60 * 60 * 1000
+  ).toDateString();
+  let statement;
+  if (count > 0) {
+    statement = `${count} days from today is `;
+  } else if (count < 0) {
+    statement = `${Math.abs(count)} days ago was `;
+  } else {
+    statement = "Today is ";
+  }
   return (
     <div className="container">
-      <p>{`${date}`}</p>
+      <p>
+        {statement}
+        {date}
+      </p>
     </div>
   );
 }
