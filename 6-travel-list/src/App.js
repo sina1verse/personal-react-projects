@@ -4,7 +4,7 @@ export default function App() {
       <Logo />
       <Form />
       <PackingList />
-      <States />
+      <Stats />
     </div>
   );
 }
@@ -12,6 +12,7 @@ export default function App() {
 function Logo() {
   return <h1>🌴Far Away 👜</h1>;
 }
+
 function Form() {
   return (
     <div className="add-form">
@@ -20,12 +21,12 @@ function Form() {
   );
 }
 function PackingList() {
-  return <div className="List"></div>;
+  return <div className="list">List</div>;
 }
-function States() {
+function Stats() {
   return (
-    <footer>
-      You have X items on your list, and you already packed X (X%)
+    <footer className="stats">
+      <em>💼You have X items on your list, and you already packed X (X%)</em>
     </footer>
   );
 }
