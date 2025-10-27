@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function App() {
   return (
     <>
@@ -9,11 +11,12 @@ export default function App() {
 }
 
 function Step() {
+  const [step, setStep] = useState(1);
   return (
     <div className="container">
-      <button>-</button>
-      <p>Step: 1</p>
-      <button>+</button>
+      <button onClick={() => setStep(() => step - 1)}>-</button>
+      <p>Step: {step}</p>
+      <button onClick={() => setStep(() => step + 1)}>+</button>
     </div>
   );
 }
