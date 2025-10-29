@@ -9,6 +9,7 @@ export default function App() {
       <Step step={step} setStep={setStep} />
       <Count step={step} count={count} setCount={setCount} />
       <DateString count={count} />
+      <ResButton setStep={setStep} setCount={setCount} />
     </>
   );
 }
@@ -20,6 +21,7 @@ function Step({ step, setStep }) {
         type="range"
         min={1}
         max={10}
+        value={step}
         onChange={(e) => setStep(Number(e.target.value))}
       />
       <span id="step">{step}</span>
@@ -30,9 +32,25 @@ function Step({ step, setStep }) {
 function Count({ step, count, setCount }) {
   return (
     <div className="container">
-      <button onClick={() => setCount((count) => count - step)}>-</button>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount((count) => count + step)}>+</button>
+      <button
+        className="countButton"
+        onClick={() => setCount((count) => count - step)}
+      >
+        -
+      </button>
+      <input
+        type="text"
+        value={count}
+        onChange={(e) => {
+          setCount(Number(e.target.value) || count);
+        }}
+      />
+      <button
+        className="countButton"
+        onClick={() => setCount((count) => count + step)}
+      >
+        +
+      </button>
     </div>
   );
 }
@@ -50,6 +68,21 @@ function DateString({ count }) {
   return (
     <div className="container">
       <p>{statement}</p>
+    </div>
+  );
+}
+
+function ResButton({ setStep, setCount }) {
+  return (
+    <div className="container">
+      <button
+        onClick={(_) => {
+          setCount(0);
+          setStep(1);
+        }}
+      >
+        Reset
+      </button>
     </div>
   );
 }
