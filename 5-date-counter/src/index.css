@@ -15,3 +15,8 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+#step {
+  padding: 0 0 0 10px;
+  width: 15px;
+}

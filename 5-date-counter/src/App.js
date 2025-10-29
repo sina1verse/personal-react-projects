@@ -16,11 +16,13 @@ export default function App() {
 function Step({ step, setStep }) {
   return (
     <div className="container">
-      <button onClick={() => setStep((step) => (step > 0 ? step - 1 : step))}>
-        -
-      </button>
-      <p>Step: {step}</p>
-      <button onClick={() => setStep((step) => step + 1)}>+</button>
+      <input
+        type="range"
+        min={1}
+        max={10}
+        onChange={(e) => setStep(Number(e.target.value))}
+      />
+      <span id="step">{step}</span>
     </div>
   );
 }
