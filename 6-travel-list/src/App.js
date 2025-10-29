@@ -7,10 +7,11 @@ const initialItems = [
 ];
 
 export default function App() {
+  const [submit, toggleSubmit] = useState(false);
   return (
     <div className="app">
       <Logo />
-      <Form />
+      <Form submit={submit} toggleSubmit={toggleSubmit} />
       <PackingList />
       <Stats />
     </div>
@@ -21,7 +22,7 @@ function Logo() {
   return <h1>🌴Far Away 👜</h1>;
 }
 
-function Form() {
+function Form({ submit, toggleSubmit }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
@@ -29,21 +30,19 @@ function Form() {
     e.preventDefault();
 
     if (!description) return;
-    const newItem = {
+    initialItems.push({
       id: initialItems.length + 1,
-      description,
-      quantity,
+      description: description,
+      quantity: quantity,
       packed: false,
-    };
-    // initialItems.push({
-    //   id: initialItems.length + 1,
-    //   description: description,
-    //   quantity: quantity,
-    //   packed: false,
-    // });
-    console.log(newItem);
+    });
     setDescription("");
     setQuantity(1);
+    if (submit) {
+      toggleSubmit(false);
+    } else {
+      toggleSubmit(true);
+    }
   }
   return (
     <form className="add-form" onSubmit={handleSubmit}>
